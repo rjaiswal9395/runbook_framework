@@ -1,0 +1,16 @@
+
+---
+service: HDFS
+name: Datanode Health Checks
+description: "Checks for various issues in Datanode"
+steps: 
+  - step: 1
+    name: Check Invalid Datanode Error
+    script: term_checker.py
+    term: Invalid dfs.datanode.data.dir
+    step_failure_template: invalid_datanode_healthcheck.j2
+    step_failure_mode: all_or_nothing
+    on_success: END
+    on_failure: CASE
+    
+ 
